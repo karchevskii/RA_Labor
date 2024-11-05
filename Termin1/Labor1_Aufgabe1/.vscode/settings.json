@@ -1,0 +1,17 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.adapterTargetName": "esp32c3",
+    "idf.customExtraPaths": "/home/student/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin:/home/student/.espressif/tools/riscv32-esp-elf-gdb/14.2_20240403/riscv32-esp-elf-gdb/bin:/home/student/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin:/home/student/.espressif/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin:/home/student/.espressif/tools/esp32ulp-elf/2.38_20240113/esp32ulp-elf/bin:/home/student/.espressif/tools/cmake/3.24.0/bin:/home/student/.espressif/tools/openocd-esp32/v0.12.0-esp32-20240318/openocd-esp32/bin:/home/student/.espressif/tools/ninja/1.11.1:/home/student/.espressif/tools/esp-rom-elfs/20240305",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "/home/student/.espressif/tools/openocd-esp32/v0.12.0-esp32-20240318/openocd-esp32/share/openocd/scripts",
+        "ESP_ROM_ELF_DIR": "/home/student/.espressif/tools/esp-rom-elfs/20240305/"
+    },
+    "idf.espIdfPath": "/home/student/esp/v5.3.1/esp-idf",
+    "idf.openOcdConfigs": [
+        "board/esp32c3-builtin.cfg"
+    ],
+    "idf.port": "/dev/ttyUSB0",
+    "idf.pythonBinPath": "/home/student/.espressif/python_env/idf5.3_py3.12_env/bin/python",
+    "idf.toolsPath": "/home/student/.espressif",
+    "idf.flashType": "UART"
+}
