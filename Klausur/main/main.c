@@ -11,6 +11,7 @@
 #include <esp_intr_alloc.h>
 
 uint8_t led_colors[LED_COUNT * 3] = {0};
+int leds;
 
 int interrupt_triggered = 0;
 int distance = 0;
@@ -53,33 +54,48 @@ void app_main()
 	while (1)
 	{
 		sendTrigger();
-		int leds;
-		uint8_t color[3] = {0, 0, 0};
 
-		
+		uint8_t color_led_strip[3] = {0, 0, 0};
+		uint8_t color_onboard_led[3] = {0, 0, 0};
 
 		int brightness = calculateBrightness((int)readADC());
 
-		switch (distance)
-		{
-		case -2:
-			leds = LED_COUNT;
-			color[0] = brightness;
-			break;
-		case -1:
-			leds = LED_COUNT;
-			color[1] = brightness;
-			break;
-		default:
+		if(distance < 5){ // distance < 5cm
 			leds = LED_COUNT - (1 + ((distance - 5) * 14 / 44));
-			color[0] = brightness;
-			break;
+			color_led_strip[1] = brightness;
+			if(distance < 3) // display red
+			{
+				color_onboard_led[1] = brightness;
+			}
+			else if (distance < 4) // display yellow
+			{
+				color_onboard_led[0] = brightness;
+				color_onboard_led[1] = brightness;
+			}
+			else // display green
+			{
+				color_onboard_led[0] = brightness;
+			}
+		}
+		else if (distance >= 50) // distance >= 50cm
+		{
+			leds = LED_COUNT;
+			color_led_strip[1] = brightness;
+		}
+		else { // 5cm <= distance < 50cm
+			leds = LED_COUNT - (1 + ((distance - 5) * 14 / 44));
+			color_led_strip[0] = brightness;
 		}
 
-		displayOnboardLed(led_colors, leds, color);
+		displayOnboardLed(led_colors, leds, color_led_strip);
 		changeMOSI(MOSI_ONBOARD_LED);
-		displayOnboardLed(led_colors, 1, color);
+		displayOnboardLed(led_colors, 1, color_onboard_led);
 		changeMOSI(MOSI);
+
+		printf("Distance: %d cm\n", distance);
+		printf("Brightness: %d\n", brightness);
+		printf("leds: %d\n", leds);
+		printf("\n");
 
 		for (int i = 0; i < 4000000; i++)
 		{

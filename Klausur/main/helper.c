@@ -82,13 +82,5 @@ int calculateBrightness(int adcVal){
 
 int calculateDistance(int timerval){
 	int distance = timerval / 58; //see datasheet
-	if (distance >= 50)
-	{
-		return -1;
-	}
-	if (distance < 5)
-	{
-		return -2;
-	}
 	return distance;
 }
