@@ -42,9 +42,8 @@ static void IRAM_ATTR gpioIsrHandler()
 void app_main()
 {
 	initADC();
-	initSPI();
 	setupTimer();
-
+	initSPI(MOSI);
 	setupGPIOsUltrasonic();
 
 	esp_intr_alloc(GPIO_INTERRUPT_SRC, 0, gpioIsrHandler, NULL, NULL);
@@ -57,7 +56,7 @@ void app_main()
 		int leds;
 		uint8_t color[3] = {0, 0, 0};
 
-		printf("Distance: %d\n", distance);
+		
 
 		int brightness = calculateBrightness((int)readADC());
 
@@ -77,11 +76,14 @@ void app_main()
 			break;
 		}
 
-		displayLeds(led_colors, leds, color);
+		displayOnboardLed(led_colors, leds, color);
+		changeMOSI(MOSI_ONBOARD_LED);
+		displayOnboardLed(led_colors, 1, color);
+		changeMOSI(MOSI);
 
 		for (int i = 0; i < 4000000; i++)
 		{
 			/* code */
-		}
+		}	
 	}
 }

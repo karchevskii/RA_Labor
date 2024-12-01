@@ -1,13 +1,13 @@
 #include "driver/spi_master.h"
 #include <string.h>
-#include "defines.h"
 
 spi_device_handle_t spi_handle;
 
-void initSPI()
+// Initialize SPI device
+void initSPI(int mosi)
 {
 	spi_bus_config_t spi_config = {
-		.mosi_io_num = MOSI,
+		.mosi_io_num = mosi,
 		.miso_io_num = MISO,
 		.sclk_io_num = SCLK,
 		.quadwp_io_num = -1,
@@ -24,9 +24,19 @@ void initSPI()
 	spi_bus_add_device(SPI2_HOST, &spi_device_config, &spi_handle);
 }
 
+// Function to change MOSI pin at runtime
+void changeMOSI(int new_mosi_pin)
+{
+	// Remove the SPI device from the bus
+	spi_bus_remove_device(spi_handle);
+	// Free the SPI bus
+	spi_bus_free(SPI2_HOST);
+	// Reinitialize the SPI bus with the new MOSI pin
+	initSPI(new_mosi_pin);
+}
 
-// Send LED data via SPI
-void spiSendLedData(uint8_t *spi_buffer, int buffer_size)
+// Send data to SPI device
+void spiSendToDevice(uint8_t *spi_buffer, int buffer_size)
 {
 	spi_transaction_t t;
 	memset(&t, 0, sizeof(t));
