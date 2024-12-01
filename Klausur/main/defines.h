@@ -28,4 +28,4 @@
 
 #define MIN_DISTANCE 2     // Minimum valid distance in cm
 #define MAX_DISTANCE 400   // Maximum valid distance in cm
-#define SMOOTHING_FACTOR 95 // Weight for new data in exponential smoothing
+#define SMOOTHING_FACTOR 90 // Weight for new data in exponential smoothing
