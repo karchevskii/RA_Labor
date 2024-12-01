@@ -80,7 +80,24 @@ int calculateBrightness(int adcVal){
 	return brightness;
 }
 
-int calculateDistance(int timerval){
-	int distance = timerval / 58; //see datasheet
-	return distance;
+int calculateDistance(int timerval) {
+    int distance = timerval / 58; // See datasheet for calculation
+    if (distance < MIN_DISTANCE || distance > MAX_DISTANCE) {
+        return -1; // Invalid distance
+    }
+    return distance;
+}
+
+int calculateStableDistance(int timerval, int *currentDistance) {
+    int newDistance = calculateDistance(timerval);
+
+    // Check if the new distance is valid
+    if (newDistance == -1) {
+        return *currentDistance; // Return the last stable value if invalid
+    }
+
+    // Apply integer-based exponential smoothing
+    *currentDistance = ((*currentDistance * (100 - SMOOTHING_FACTOR)) + (newDistance * SMOOTHING_FACTOR)) / 100;
+
+    return *currentDistance;
 }

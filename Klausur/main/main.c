@@ -12,6 +12,7 @@
 
 uint8_t led_colors[LED_COUNT * 3] = {0};
 int leds;
+static int currentDistance = 0; // Keep track of the smoothed distance
 
 int interrupt_triggered = 0;
 int distance = 0;
@@ -34,7 +35,7 @@ static void IRAM_ATTR gpioIsrHandler()
 	else // falling edge -> end timer and calculate distance
 	{
 		int timerval = (int)readTimer(); // read timer
-		distance = calculateDistance(timerval);
+		distance = calculateStableDistance(timerval, &currentDistance);
 		interrupt_triggered = 0; // toggle flag to 0 -> next edge is rising
 	}
 	*GPIO_STATUS_W1TC_REG |= 0b10; // clear the interrupt of ECHO
@@ -49,8 +50,6 @@ void app_main()
 
 	esp_intr_alloc(GPIO_INTERRUPT_SRC, 0, gpioIsrHandler, NULL, NULL);
 
-	// inbuiltLED();
-
 	while (1)
 	{
 		sendTrigger();
@@ -60,9 +59,9 @@ void app_main()
 
 		int brightness = calculateBrightness((int)readADC());
 
-		if(distance < 5){ // distance < 5cm
-			leds = LED_COUNT - (1 + ((distance - 5) * 14 / 44));
-			color_led_strip[1] = brightness;
+		if(distance < 5 && distance > 0){ // distance < 5cm and positive
+			leds = LED_COUNT;
+			color_led_strip[0] = brightness;
 			if(distance < 3) // display red
 			{
 				color_onboard_led[1] = brightness;
@@ -82,6 +81,12 @@ void app_main()
 			leds = LED_COUNT;
 			color_led_strip[1] = brightness;
 		}
+		else if (distance == -1) //error
+		{
+			leds = LED_COUNT;
+			color_led_strip[2] = brightness;
+			color_onboard_led[2] = brightness;
+		}
 		else { // 5cm <= distance < 50cm
 			leds = LED_COUNT - (1 + ((distance - 5) * 14 / 44));
 			color_led_strip[0] = brightness;
@@ -92,12 +97,12 @@ void app_main()
 		displayOnboardLed(led_colors, 1, color_onboard_led);
 		changeMOSI(MOSI);
 
-		printf("Distance: %d cm\n", distance);
-		printf("Brightness: %d\n", brightness);
-		printf("leds: %d\n", leds);
-		printf("\n");
+		// printf("Distance: %d cm\n", distance);
+		// printf("Brightness: %d\n", brightness);
+		// printf("leds: %d\n", leds);
+		// printf("\n");
 
-		for (int i = 0; i < 4000000; i++)
+		for (int i = 0; i < 1000000; i++)
 		{
 			/* code */
 		}	

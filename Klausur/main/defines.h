@@ -25,3 +25,7 @@
 #define T0H_WS2812 0x80 // Logical 0
 
 #define GPIO_INTERRUPT_SRC 16
+
+#define MIN_DISTANCE 2     // Minimum valid distance in cm
+#define MAX_DISTANCE 400   // Maximum valid distance in cm
+#define SMOOTHING_FACTOR 2 // Weight for new data in exponential smoothing
