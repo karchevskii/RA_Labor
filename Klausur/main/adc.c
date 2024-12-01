@@ -29,7 +29,7 @@ void initADC()
     *APB_SARADC_INT_CLR_REG |= (0b1 << 31); // reset interrupt
 }
 
-uint32_t adc_read()
+uint32_t readADC()
 {
     *APB_SARADC_ONETIME_SAMPLE_REG |= 0b1 << 29; // start one time sample
     for (int i = 0; i < 10000; i++)

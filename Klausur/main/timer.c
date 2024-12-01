@@ -1,7 +1,7 @@
 #pragma once
 #include "esp32c3_reg.h"
 
-void setup_timer()
+void setupTimer()
 {
 	*TIMG_T0CONFIG_REG &= ~(0b1 << 9); // use APB_CLK
 	*TIMG_T0CONFIG_REG |= (0b1 << 30); // increase
@@ -12,13 +12,13 @@ void setup_timer()
 	*TIMG_T0CONFIG_REG |= (0x50 << 13);	   // set divider to 80 -> CLK is 1MHz
 }
 
-void start_timer()
+void startTimer()
 {
 	*TIMG_T0LOAD_REG = 1U;			   // Reload start value
 	*TIMG_T0CONFIG_REG |= (0b1 << 31); // Enable Timer
 }
 
-int read_timer()
+int readTimer()
 {
 	*TIMG_T0UPDATE_REG |= (0b1 << 31);
 	while (*TIMG_T0UPDATE_REG >> 31 != 0)

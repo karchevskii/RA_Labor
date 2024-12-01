@@ -16,7 +16,6 @@
 #define RESET_PERIOD 50			   // Reset period in microseconds (at least 50µs)
 
 #define T1H 0xF0 // Logical 1: high for ~800ns (8/10 of a byte)
-#define T0H 0x80 // Logical 0: high for ~400ns
+#define T0H 0x80 // Logical 0: high for ~400ns (4/10 of a byte)
 
-#define STR_HELPER(x) #x
-#define STR(x) STR_HELPER(x)
+#define GPIO_INTERRUPT_SRC 16

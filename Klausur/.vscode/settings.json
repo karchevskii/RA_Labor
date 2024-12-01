@@ -24,6 +24,9 @@
         "freertos.h": "c",
         "task.h": "c",
         "string.h": "c",
-        "spi_master.h": "c"
+        "spi_master.h": "c",
+        "inttypes.h": "c",
+        "calibrate_adc.h": "c",
+        "defines.h": "c"
     }
 }

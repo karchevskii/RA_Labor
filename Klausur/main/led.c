@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include "defines.h"
 
-void display_leds(uint8_t *led_colors, uint16_t led_count, uint8_t color[3])
+void displayLeds(uint8_t *led_colors, uint16_t led_count, uint8_t color[3])
 {
 
     // Check the buffer size
@@ -73,8 +73,8 @@ void display_leds(uint8_t *led_colors, uint16_t led_count, uint8_t color[3])
     uint8_t *spi_buffer = malloc(spi_buffer_size);
     memset(spi_buffer, 0, spi_buffer_size);
 
-    encode_led_data(led_colors, LED_COUNT, spi_buffer);
-    spi_send_led_data(spi_buffer, spi_buffer_size);
+    encodeLedData(led_colors, LED_COUNT, spi_buffer);
+    spiSendLedData(spi_buffer, spi_buffer_size);
     free(spi_buffer);
 }
 

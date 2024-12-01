@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 // Encode LED colors into SPI buffer
-void encode_led_data(uint8_t *led_colors, int num_leds, uint8_t *spi_buffer)
+void encodeLedData(uint8_t *led_colors, int num_leds, uint8_t *spi_buffer)
 {
 	int buffer_index = 0;
 	for (int i = 0; i < num_leds; i++)
@@ -42,4 +42,17 @@ int calculateBrightness(int adcVal){
 	//minvalue is 1692, maxvalue is 4095
 	int brightness = ((adcVal - 1692)*255/2403);
 	return brightness;
+}
+
+int calculateDistance(int timerval){
+	int distance = timerval / 58; //see datasheet
+	if (distance >= 50)
+	{
+		return -1;
+	}
+	if (distance < 5)
+	{
+		return -2;
+	}
+	return distance;
 }

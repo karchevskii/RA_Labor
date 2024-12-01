@@ -4,7 +4,7 @@
 
 spi_device_handle_t spi_handle;
 
-void spi_init()
+void initSPI()
 {
 	spi_bus_config_t spi_config = {
 		.mosi_io_num = MOSI,
@@ -26,7 +26,7 @@ void spi_init()
 
 
 // Send LED data via SPI
-void spi_send_led_data(uint8_t *spi_buffer, int buffer_size)
+void spiSendLedData(uint8_t *spi_buffer, int buffer_size)
 {
 	spi_transaction_t t;
 	memset(&t, 0, sizeof(t));

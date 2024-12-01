@@ -7,9 +7,10 @@ volatile uint32_t* GPIO_BASE            =   (volatile uint32_t*) 0x60004000;    
 volatile uint32_t* GPIO_OUT_REG         =   (volatile uint32_t*) 0x60004004;            // GPIO Output Register
 volatile uint32_t* GPIO_OUT_W1TS_REG    =   (volatile uint32_t*) 0x60004008;            // GPIO Output Set Register
 volatile uint32_t* GPIO_OUT_W1TC_REG    =   (volatile uint32_t*) 0x6000400C;            // GPIO Output Clear Register
-volatile uint32_t* GPIO_IN_REG          =   (volatile uint32_t*) 0x6000403C;            // GPIO Output Regist
+volatile uint32_t* GPIO_IN_REG          =   (volatile uint32_t*) 0x6000403C;            // GPIO Input Register
 volatile uint32_t* GPIO_ENABLE_REG      =   (volatile uint32_t*) 0x60004020;            // GPIO Enable Register
-volatile uint32_t* GPIO_ENABLE_W1TC_REG =   (volatile uint32_t*) 0x60009028;
+volatile uint32_t* GPIO_ENABLE_W1TC_REG =   (volatile uint32_t*) 0x60009028;            // GPIO Enable Clear Register
+volatile uint32_t* GPIO_STATUS_W1TC_REG =   (volatile uint32_t*) 0x6000404C;            // GPIO Status Clear Register
 
 //GPIO Input Function Configuration Registers
 volatile uint32_t* GPIO_FUNC0_OUT_SEL_CFG_REG =   (volatile uint32_t*) 0x60004554;
@@ -93,3 +94,30 @@ volatile uint32_t* APB_SARADC_APB_ADC_CLKM_CONF_REG     =   (volatile uint32_t*)
 volatile uint32_t* APB_SARADC_INT_ENA_REG               =   (volatile uint32_t*) 0x60040040;  // Enable register of SAR ADC interrupts
 volatile uint32_t* APB_SARADC_INT_RAW_REG               =   (volatile uint32_t*) 0x60040044;  // Raw register of SAR ADC interrupts
 volatile uint32_t* APB_SARADC_INT_CLR_REG               =   (volatile uint32_t*) 0x6004004C;  // Clear register of SAR ADC interrupts
+
+
+volatile uint32_t* GPIO_PIN0_REG = (volatile uint32_t*) 0x60004074; // GPIO Pin 0 Register
+volatile uint32_t* GPIO_PIN1_REG = (volatile uint32_t*) 0x60004078; // GPIO Pin 1 Register
+volatile uint32_t* GPIO_PIN2_REG = (volatile uint32_t*) 0x6000407C; // GPIO Pin 2 Register
+volatile uint32_t* GPIO_PIN3_REG = (volatile uint32_t*) 0x60004080; // GPIO Pin 3 Register
+volatile uint32_t* GPIO_PIN4_REG = (volatile uint32_t*) 0x60004084; // GPIO Pin 4 Register
+volatile uint32_t* GPIO_PIN5_REG = (volatile uint32_t*) 0x60004088; // GPIO Pin 5 Register
+volatile uint32_t* GPIO_PIN6_REG = (volatile uint32_t*) 0x6000408C; // GPIO Pin 6 Register
+volatile uint32_t* GPIO_PIN7_REG = (volatile uint32_t*) 0x60004090; // GPIO Pin 7 Register
+volatile uint32_t* GPIO_PIN8_REG = (volatile uint32_t*) 0x60004094; // GPIO Pin 8 Register
+volatile uint32_t* GPIO_PIN9_REG = (volatile uint32_t*) 0x60004098; // GPIO Pin 9 Register
+volatile uint32_t* GPIO_PIN10_REG = (volatile uint32_t*) 0x6000409C; // GPIO Pin 10 Register
+volatile uint32_t* GPIO_PIN11_REG = (volatile uint32_t*) 0x600040A0; // GPIO Pin 11 Register
+volatile uint32_t* GPIO_PIN12_REG = (volatile uint32_t*) 0x600040A4; // GPIO Pin 12 Register
+volatile uint32_t* GPIO_PIN13_REG = (volatile uint32_t*) 0x600040A8; // GPIO Pin 13 Register
+volatile uint32_t* GPIO_PIN14_REG = (volatile uint32_t*) 0x600040AC; // GPIO Pin 14 Register
+volatile uint32_t* GPIO_PIN15_REG = (volatile uint32_t*) 0x600040B0; // GPIO Pin 15 Register
+volatile uint32_t* GPIO_PIN16_REG = (volatile uint32_t*) 0x600040B4; // GPIO Pin 16 Register
+volatile uint32_t* GPIO_PIN17_REG = (volatile uint32_t*) 0x600040B8; // GPIO Pin 17 Register
+volatile uint32_t* GPIO_PIN18_REG = (volatile uint32_t*) 0x600040BC; // GPIO Pin 18 Register
+volatile uint32_t* GPIO_PIN19_REG = (volatile uint32_t*) 0x600040C0; // GPIO Pin 19 Register
+volatile uint32_t* GPIO_PIN20_REG = (volatile uint32_t*) 0x600040C4; // GPIO Pin 20 Register
+volatile uint32_t* GPIO_PIN21_REG = (volatile uint32_t*) 0x600040C8; // GPIO Pin 21 Register
+
+volatile uint32_t* GPIO_PCPU_INT_REG = (volatile uint32_t*) 0x6000405C; // GPIO PCPU Interrupt Register
+volatile uint32_t* GPIO_STATUS_REG = (volatile uint32_t*) 0x60004044; // GPIO Status Register
