@@ -126,7 +126,8 @@ void app_main()
 			leds = LED_COUNT - (1 + ((distance - 5) * (LED_COUNT - 1) / range));
 		}
 
-		displayLeds(led_colors, leds, color_led_strip);
+		// displayLeds(led_colors, leds, color_led_strip);
+		displayOnboardLed(led_colors, leds, color_led_strip);
 		changeMOSI(MOSI_ONBOARD_LED);
 		displayOnboardLed(led_colors, 1, color_onboard_led);
 		changeMOSI(MOSI);

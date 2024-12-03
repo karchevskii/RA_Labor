@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "author": "Anonymous maker",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": -0.3,
+        "left": -3.78,
+        "attrs": { "builder": "esp-idf" }
+      },
+      {
+        "type": "wokwi-hc-sr04",
+        "id": "ultrasonic1",
+        "top": -113.7,
+        "left": -196.1,
+        "attrs": { "distance": "33" }
+      },
+      { "type": "wokwi-potentiometer", "id": "pot1", "top": -39.7, "left": 172.6, "attrs": {} },
+      {
+        "type": "wokwi-led-ring",
+        "id": "ring1",
+        "top": -258.56,
+        "left": 308.39,
+        "attrs": { "pixels": "16" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "esp:GND.1", "ultrasonic1:GND", "black", [ "h-96", "v-38.4" ] ],
+      [ "ultrasonic1:VCC", "esp:5V.2", "red", [ "v0" ] ],
+      [ "ultrasonic1:TRIG", "esp:3", "green", [ "v0" ] ],
+      [ "ultrasonic1:ECHO", "esp:1", "green", [ "v0" ] ],
+      [ "pot1:GND", "esp:GND.6", "black", [ "v0" ] ],
+      [ "pot1:SIG", "esp:0", "green", [ "v0" ] ],
+      [ "pot1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+      [ "ring1:GND", "esp:GND.1", "black", [ "v48", "h-364.8" ] ],
+      [ "ring1:VCC", "esp:5V.2", "red", [ "v0" ] ],
+      [ "ring1:DIN", "esp:2", "green", [ "v0" ] ]
+    ],
+    "dependencies": {}
+  }
