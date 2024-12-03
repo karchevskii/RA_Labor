@@ -1,5 +1,6 @@
 #include "driver/spi_master.h"
 #include <string.h>
+#include "defines.h"
 
 spi_device_handle_t spi_handle;
 

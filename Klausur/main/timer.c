@@ -1,4 +1,3 @@
-#pragma once
 #include "esp32c3_reg.h"
 
 void setupTimer()
