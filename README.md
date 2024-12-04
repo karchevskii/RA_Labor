@@ -16,8 +16,8 @@ In diesem Labor wurde mit ESP32-C3 Mikrokontroller gearbeitet. Es wurden verschi
 Wokwi ist ein Simulationstool für uC und ist sowohl im Browser, als auch als VSC Extension verfügbar. Die Klausuraufgabe kann ohne Hardware damit getestest werden (die Konfiguration ist bereits vorhanden). Dafür bildet man das Projekt und öffnet diagram.json im VSCode. Alterativ gibt es dieses Projekt auch [online](https://wokwi.com/projects/415695793737351169).
 
 ## Bitte beachten!
-1. Im Labor wurde anderes LED-Strip verwendet, nämlich SK6812. Dieses hat andere Zeitkonstanten für SPI. Das im Wokwi verfügbares LED-Strip ist vom anderen Typ (WS2812), gleich wie der Onboard LED. Deswegen wirdim Wokwi die gleiche Funktion wie für Onboard LED auch für das Strip verwendet.
-2. Um die Farben tatsächlich sehen zu können, muss der Poti hochgedreht werden, sonst ist die Helligkeit minimal.
+1. Im Labor wurde anderer als in Wokwi LED-Strip-Typ verwendet, nämlich SK6812. Dieser hat andere Zeitkonstanten für SPI-Kommunikation. Das im Wokwi verfügbares LED-Strip ist vom Typ WS2812, gleich wie das Onboard LED. Deswegen wird im Wokwi die gleiche Funktion wie für das Onboard LED auch für das Strip verwendet.
+2. Um die Farben tatsächlich sehen zu können, muss der Poti hochgedreht werden, sonst ist die Helligkeit minimal (0).
 
 # Besonderheiten
 
